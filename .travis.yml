@@ -4,7 +4,11 @@ language: minimal
 os: osx
 osx_image: xcode10.2
 
-install: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+install:
+  - wget https://raw.githubusercontent.com/Homebrew/install/master/uninstall
+  - chmod +x uninstall
+  - ./uninstall --force
+  - rm uninstall
 script:
   - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   - brew update
