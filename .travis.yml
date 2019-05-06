@@ -1,0 +1,12 @@
+# A dumb script to run nightly tests of the Homebrew installer script
+
+language: minimal
+os: osx
+osx_image: xcode10.2
+
+install: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+script:
+  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  - brew update
+  - brew outdated
+  - brew upgrade
